@@ -8,6 +8,7 @@ Desenvolvido por Anderson Belderrama - andersonbelderrama@gmail.com
 - TailwindCSS for Style
 - Laravel for API
 - MySQL for Database
+- Docker for Development
 
 ## Estrutura do Projeto
 
@@ -69,8 +70,30 @@ Gerar tabelas no banco de dados configurado
 php artisan migrate
 ```
 
-Popula banco de dados com dados para teste
+Popula banco de dados com dados fake para teste
 
 ```sh
 php artisan db:seed
+```
+
+Executa servidor de desenvolvimento PHP
+
+```sh
+php artisan serve
+```
+
+## Docker Backend (Avançado)
+
+Precisa ter instalado docker e docker-compose no seu ambiente para seguir os passos abaixo.
+
+Iniciar serviços(web, banco de dados)
+
+```sh
+./vendor/sail up -d
+```
+
+Parar serviços(web, banco de dados)
+
+```sh
+./vendor/sail down
 ```

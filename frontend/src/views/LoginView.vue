@@ -102,6 +102,14 @@ const router = useRouter();
 const email = ref('');
 const password = ref('');
 
+const isUserAuthenticated = () => {
+  return localStorage.getItem('token') !== null;
+};
+
+if(isUserAuthenticated()) {
+  router.push('/');
+}
+
 const submitForm = async () => {
   try {
     const response = await axios.post('/login', { email: email.value, password: password.value });

@@ -97,3 +97,11 @@ Parar serviços(web, banco de dados)
 ```sh
 ./vendor/bin/sail down
 ```
+
+## Informação Adicional
+
+- User/Password: test@test.com/password
+- Url Frontend: localhost:5173
+- Endpoints Frontend: / & /login
+- Url Backend: localhost/api
+- Endpoints Backend /login & /logout & /user

@@ -89,11 +89,11 @@ Precisa ter instalado docker e docker-compose no seu ambiente para seguir os pas
 Iniciar serviços(web, banco de dados)
 
 ```sh
-./vendor/sail up -d
+./vendor/bin/sail up -d
 ```
 
 Parar serviços(web, banco de dados)
 
 ```sh
-./vendor/sail down
+./vendor/bin/sail down
 ```

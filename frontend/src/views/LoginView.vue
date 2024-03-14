@@ -1,20 +1,3 @@
-<script setup>
-import LogoApp from '@/components/LogoApp.vue'
-import IconToolzz from '@/components/icons/IconToolzz.vue';
-import IconFacebook from '@/components/icons/IconFacebook.vue';
-import IconICloud from '@/components/icons/IconICloud.vue';
-import IconTwitter from '@/components/icons/IconTwitter.vue';
-import IconUserInput from '@/components/icons/IconUserInput.vue';
-import IconPasswordInput from '@/components/icons/IconPasswordInput.vue';
-import HCaptchaDemo from '@/components/HCaptchaDemo.vue';
-import IconLoginButton from '@/components/icons/IconLoginButton.vue'
-import ButtonDefault from '@/components/ButtonDefault.vue';
-import IconBackButton from '@/components/icons/IconBackButton.vue';
-import IconGoogle from '@/components/icons/IconGoogle.vue';
-import Slider from '@/components/Slider.vue';
-
-</script>
-
 <template>
   <div class="flex justify-center xl:justify-between dark:bg-[#232323]">
     <Slider/>
@@ -55,14 +38,14 @@ import Slider from '@/components/Slider.vue';
           <div class="mx-4 text-[18px] leading-[27px] text-[#585858] dark:text-[#909090] font-normal">OU</div>
           <div class="border-t border-black dark:border-white flex-grow opacity-10"></div>
       </div>
-      <form action="" class="flex flex-col justify-between p-6 space-y-6">
+      <form @submit.prevent="submitForm" class="flex flex-col justify-between p-6 space-y-6">
         <div class="flex flex-col">
           <label class="text-[16px] leading-[22.4px] text-[#0E0E0E] dark:text-[#EDEDED] font-normal mb-2">Usuário</label>
           <div class="relative w-full">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
               <IconUserInput />
             </span>
-            <input type="text" class="p-[16px] pl-[38px] rounded-lg border border-[#6A6A6A] dark:border-[#5C5C5C] dark:bg-transparent text-[#585858] dark:text-[#909090] text-[16px] leading-[24px] w-full h-[48px] focus:outline-0">
+            <input v-model="email" type="text" class="p-[16px] pl-[38px] rounded-lg border border-[#6A6A6A] dark:border-[#5C5C5C] dark:bg-transparent text-[#585858] dark:text-[#909090] text-[16px] leading-[24px] w-full h-[48px] focus:outline-0">
           </div>
         </div>
         <div class="flex flex-col">
@@ -71,7 +54,7 @@ import Slider from '@/components/Slider.vue';
             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
               <IconPasswordInput />
             </span>
-            <input type="text" class="p-[16px] pl-[38px] rounded-lg border border-[#6A6A6A] dark:border-[#5C5C5C] dark:bg-transparent text-[#585858] dark:text-[#909090] text-[16px] leading-[24px] w-full h-[48px] focus:outline-0">
+            <input v-model="password" type="password" class="p-[16px] pl-[38px] rounded-lg border border-[#6A6A6A] dark:border-[#5C5C5C] dark:bg-transparent text-[#585858] dark:text-[#909090] text-[16px] leading-[24px] w-full h-[48px] focus:outline-0">
           </div>
         </div>
         <div class="flex space-x-3 items-center">
@@ -82,7 +65,7 @@ import Slider from '@/components/Slider.vue';
           <HCaptchaDemo />
         </div>
         <div class="flex justify-center items-center">
-          <button class="flex justify-center items-center space-x-2 px-4 py-3 rounded-lg bg-[#0761E2] w-full">
+          <button type="submit" class="flex justify-center items-center space-x-2 px-4 py-3 rounded-lg bg-[#0761E2] w-full">
             <IconLoginButton />
             <p class="text-white text-[18px] leading-[25.2px]">Entrar</p>
           </button>
@@ -95,3 +78,47 @@ import Slider from '@/components/Slider.vue';
     </div>
   </div>
 </template>
+
+<script setup>
+import LogoApp from '@/components/LogoApp.vue'
+import IconToolzz from '@/components/icons/IconToolzz.vue';
+import IconFacebook from '@/components/icons/IconFacebook.vue';
+import IconICloud from '@/components/icons/IconICloud.vue';
+import IconTwitter from '@/components/icons/IconTwitter.vue';
+import IconUserInput from '@/components/icons/IconUserInput.vue';
+import IconPasswordInput from '@/components/icons/IconPasswordInput.vue';
+import HCaptchaDemo from '@/components/HCaptchaDemo.vue';
+import IconLoginButton from '@/components/icons/IconLoginButton.vue'
+import ButtonDefault from '@/components/ButtonDefault.vue';
+import IconBackButton from '@/components/icons/IconBackButton.vue';
+import IconGoogle from '@/components/icons/IconGoogle.vue';
+import Slider from '@/components/Slider.vue';
+
+import { ref } from 'vue';
+import axios from '@/plugins/axios';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const email = ref('');
+const password = ref('');
+
+const submitForm = async () => {
+  try {
+    const response = await axios.post('/login', { email: email.value, password: password.value });
+    const token = response.data.token;
+    
+    localStorage.setItem('token', token);
+    
+    console.log('Login bem-sucedido');
+
+    router.push('/');
+  } catch (error) {
+    if (error.response) {
+      console.error('Erro ao tentar fazer login:', error.response.data.message);
+    } else {
+      console.error('Erro ao tentar fazer login:', error.message);
+    }
+  }
+};
+
+</script>

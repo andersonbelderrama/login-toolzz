@@ -16,17 +16,17 @@
                 </div>
                 <div class="flex justify-between w-full">
                     <div class="flex items-center space-x-4">
-                        <span v-for="(selector, index) in selectors" :key="index" :class="{ 'bg-white': selectedIndex === index, 'bg-[#222222]': selectedIndex !== index }" class="w-[96px] h-[4px]" @click="select(index)"></span>
+                        <span v-for="(selector, index) in selectors" :key="index" :class="{ 'bg-white': selectedIndex === index, 'bg-[#222222]': selectedIndex !== index }" class="w-[96px] h-[4px] cursor-pointer" @click="select(index)"></span>
                     </div>
                     <div class="flex items-center">
-                        <button @click="previous" class="flex justify-center items-center rounded-full w-16 h-16">
+                        <button @click="previous" class="flex justify-center items-center rounded-full w-16 h-16 group">
                             <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 29C14.4375 29 13.9375 28.8125 13.5625 28.4375L1.5625 16.4375C0.75 15.6875 0.75 14.375 1.5625 13.625L13.5625 1.625C14.3125 0.8125 15.625 0.8125 16.375 1.625C17.1875 2.375 17.1875 3.6875 16.375 4.4375L5.8125 15L16.375 25.625C17.1875 26.375 17.1875 27.6875 16.375 28.4375C16 28.8125 15.5 29 15 29Z" fill="#3A3A3A"/>
+                                <path d="M15 29C14.4375 29 13.9375 28.8125 13.5625 28.4375L1.5625 16.4375C0.75 15.6875 0.75 14.375 1.5625 13.625L13.5625 1.625C14.3125 0.8125 15.625 0.8125 16.375 1.625C17.1875 2.375 17.1875 3.6875 16.375 4.4375L5.8125 15L16.375 25.625C17.1875 26.375 17.1875 27.6875 16.375 28.4375C16 28.8125 15.5 29 15 29Z" class="group-hover:fill-white" fill="#3A3A3A"/>
                             </svg>
                         </button>
-                        <button @click="next" class="flex justify-center items-center rounded-full w-16 h-16">
+                        <button @click="next" class="flex justify-center items-center rounded-full w-16 h-16 group">
                             <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 29C2.4375 29 1.9375 28.8125 1.5625 28.4375C0.75 27.6875 0.75 26.375 1.5625 25.625L12.125 15L1.5625 4.4375C0.75 3.6875 0.75 2.375 1.5625 1.625C2.3125 0.8125 3.625 0.8125 4.375 1.625L16.375 13.625C17.1875 14.375 17.1875 15.6875 16.375 16.4375L4.375 28.4375C4 28.8125 3.5 29 3 29Z" fill="white"/>
+                                <path d="M3 29C2.4375 29 1.9375 28.8125 1.5625 28.4375C0.75 27.6875 0.75 26.375 1.5625 25.625L12.125 15L1.5625 4.4375C0.75 3.6875 0.75 2.375 1.5625 1.625C2.3125 0.8125 3.625 0.8125 4.375 1.625L16.375 13.625C17.1875 14.375 17.1875 15.6875 16.375 16.4375L4.375 28.4375C4 28.8125 3.5 29 3 29Z" class="group-hover:fill-white" fill="#3A3A3A"/>
                             </svg>
                         </button>
                     </div>

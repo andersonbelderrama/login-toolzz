@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="flex space-x-3 items-center">
-          <input type="checkbox" class="w-[20px] h-[20px] appearance-none dark:bg-transparent dark:border dark:border-[#5C5C5C] dark:checked:bg-white " >
+          <input type="checkbox" class="w-[20px] h-[20px] appearance-none dark:bg-transparent dark:border dark:border-[#5C5C5C] dark:checked:bg-[#0761E2] " >
           <label class="text-[14px] leading-[16.94px] text-[#0E0E0E] dark:text-[#EDEDED] font-medium">Manter conectado</label>
         </div>
         <div class="flex justify-center items-center flex-col">
